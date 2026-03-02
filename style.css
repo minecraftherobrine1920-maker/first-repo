@@ -1,0 +1,174 @@
+/* ----------------------------
+   ModernUI — Complete Styles
+   Replace your old style.css with this.
+   ---------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root{
+  --accent: #4f7afe;
+  --accent-2: #335ce6;
+  --glass: rgba(255,255,255,0.45);
+  --glass-dark: rgba(20,20,20,0.55);
+  --text: #111;
+  --muted: #6b6b6b;
+}
+
+/* Reset & basics */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:"Poppins",sans-serif;
+  margin:0;
+  color:var(--text);
+  background: linear-gradient(-45deg,#eef6ff,#f4f9ff,#eef5ff,#f8fbff);
+  background-size:400% 400%;
+  animation: gradientMove 12s ease infinite;
+  transition: background .8s ease,color .5s ease;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  opacity:0;
+  animation: pageFade .5s ease forwards;
+}
+
+/* Dark theme */
+body.dark{
+  --text:#e6e9ee;
+  --muted:#b5b7bf;
+  background: linear-gradient(-45deg,#06070b,#0b0f17,#0d1118,#06070b);
+}
+
+/* Page fade */
+@keyframes pageFade{to{opacity:1}}
+@keyframes gradientMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* Background shapes */
+.bg-shapes{position:fixed;inset:0;pointer-events:none;z-index:0}
+.bg-shapes span{
+  position:absolute;border-radius:50%;
+  width:160px;height:160px;
+  background:rgba(255,255,255,0.18);
+  filter:blur(30px);
+  transform:translate3d(0,0,0);
+}
+.bg-shapes span:nth-child(1){top:6%;left:8%;animation:float1 14s ease-in-out infinite}
+.bg-shapes span:nth-child(2){top:72%;left:65%;width:200px;height:200px;animation:float2 18s ease-in-out infinite}
+.bg-shapes span:nth-child(3){top:38%;left:82%;width:140px;height:140px;animation:float3 12s ease-in-out infinite}
+.bg-shapes span:nth-child(4){top:80%;left:18%;width:120px;height:120px;animation:float4 16s ease-in-out infinite}
+@keyframes float1{0%{transform:translateY(0)}50%{transform:translateY(-40px)}100%{transform:translateY(0)}}
+@keyframes float2{0%{transform:translateY(0)}50%{transform:translateY(-60px)}100%{transform:translateY(0)}}
+@keyframes float3{0%{transform:translateY(0)}50%{transform:translateY(-30px)}100%{transform:translateY(0)}}
+@keyframes float4{0%{transform:translateY(0)}50%{transform:translateY(-45px)}100%{transform:translateY(0)}}
+
+/* Layout */
+.container{width:90%;max-width:1100px;margin:60px auto;position:relative;z-index:2}
+.center{text-align:center}
+.lead{color:var(--muted);margin-top:10px}
+
+/* NAV */
+.nav{
+  position:sticky;top:0;z-index:3;
+  display:flex;align-items:center;gap:16px;
+  justify-content:space-between;padding:14px 6%;
+  background:var(--glass);
+  backdrop-filter:blur(10px);
+  border-radius:0 0 14px 14px;
+  box-shadow:0 6px 30px rgba(12,24,60,0.08);
+}
+body.dark .nav{background:var(--glass-dark)}
+.logo{font-weight:700;font-size:20px;color:var(--accent)}
+.nav-links{list-style:none;display:flex;gap:18px;margin:0;padding:0}
+.nav-links a{color:inherit;text-decoration:none;font-weight:500;padding:8px 6px;border-radius:8px}
+.nav-links a:hover,.nav-links a.active{color:var(--accent)}
+.hamburger{display:none;background:transparent;border:0;cursor:pointer;padding:8px}
+.hamburger span{display:block;width:22px;height:2px;background:currentColor;margin:5px 0;border-radius:2px}
+
+/* Toggle */
+.toggle{margin-left:12px;padding:8px 12px;border-radius:999px;background:var(--accent);color:#fff;cursor:pointer;font-weight:600;border:0;box-shadow:0 6px 20px rgba(79,122,254,0.18)}
+body.dark .toggle{background:rgba(255,255,255,0.06);color:var(--text);box-shadow:none}
+
+/* Hero */
+.hero{padding:90px 0 40px 0}
+.hero-title{font-size:44px;margin:0 0 12px;color:var(--text)}
+.hero-sub{font-size:18px;color:var(--muted)}
+.hero-cta{margin-top:20px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* Buttons */
+.btn{display:inline-block;padding:12px 20px;border-radius:12px;text-decoration:none;background:var(--accent);color:#fff;font-weight:600;box-shadow:0 10px 30px rgba(79,122,254,0.15);transition:transform .18s ease,box-shadow .18s ease}
+.btn:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(79,122,254,0.22)}
+.btn.outline{background:transparent;color:var(--text);border:1px solid rgba(0,0,0,0.06)}
+body.dark .btn.outline{border-color:rgba(255,255,255,0.06);color:var(--text)}
+
+/* Boxes / Cards */
+.box{background:var(--glass);backdrop-filter:blur(10px);padding:26px;border-radius:14px;box-shadow:0 12px 30px rgba(12,24,60,0.08);transition:transform .35s ease,box-shadow .35s ease;min-height:120px}
+body.dark .box{background:var(--glass-dark);box-shadow:0 12px 30px rgba(0,0,0,0.3)}
+.box:hover{transform:translateY(-12px) rotateX(6deg);box-shadow:0 28px 60px rgba(10,20,40,0.15)}
+
+/* features */
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-top:40px}
+
+/* services layout */
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:30px}
+.service-card{min-height:180px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+
+/* contact form */
+.contact-box{max-width:760px;margin:24px auto;padding:28px}
+.contact-box input,.contact-box textarea{
+  width:100%;padding:12px;border-radius:10px;border:0;margin-top:12px;background:rgba(255,255,255,0.9);color:#111;outline:none;box-shadow:inset 0 1px 0 rgba(0,0,0,0.03)
+}
+body.dark .contact-box input,body.dark .contact-box textarea{background:rgba(10,10,10,0.6);color:var(--text);border:1px solid rgba(255,255,255,0.04)}
+.contact-box .form-actions{display:flex;gap:12px;justify-content:flex-end;margin-top:14px}
+
+/* small screens */
+@media (max-width:900px){
+  .nav{padding:12px 4%}
+  .nav-links{position:fixed;right:-100%;top:0;height:100vh;width:260px;background:var(--glass);backdrop-filter:blur(8px);flex-direction:column;padding:70px 18px;gap:18px;transition:right .28s ease;z-index:6}
+  .nav-links.open{right:0}
+  .hamburger{display:block}
+  .toggle{display:none}
+  .container {
+  max-width: 1200px;
+  padding: 0 20px;
+  margin: auto;
+}
+
+}
+
+/* dark mode specific overrides for readability */
+body.dark .lead{color:var(--muted)}
+body.dark .hero-sub{color:var(--muted)}
+body.dark .btn{box-shadow:0 10px 30px rgba(0,0,0,0.2)}
+/* ===== MOBILE NAV ===== */
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: rgba(20, 20, 30, 0.95);
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 12px;
+    display: none;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+.features,
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+
